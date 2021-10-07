@@ -16,3 +16,12 @@ module MyEnumerable
     end
     true
   end
+
+  def filter
+   result = []
+   self.each do |e|
+    if yield(e)
+     result.append(e)
+    end
+   end
+  end
