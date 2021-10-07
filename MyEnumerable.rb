@@ -20,8 +20,7 @@ module MyEnumerable
   def filter
    result = []
    self.each do |e|
-    if yield(e)
-     result.append(e)
-    end
+    result.append(e) if yield(e) 
    end
+   result
   end
