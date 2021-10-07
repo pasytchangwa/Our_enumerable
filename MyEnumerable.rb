@@ -8,3 +8,11 @@ module MyEnumerable
     false
    end
   end
+
+  def all?
+    self.each do |e|
+      result = yield(e)
+      false unless result
+    end
+    true
+  end
