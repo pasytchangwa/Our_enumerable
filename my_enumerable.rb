@@ -1,27 +1,19 @@
 module MyEnumerable
   def any?
-    self.each do |e|
-      result = yield(e)
-      true if result
-    end
+    each { |e| return true if yield e  }
     false
   end
 
   def all?
-    self.each do |e|
-      result = yield(e)
-      if result
-        true
-      end
-    end
-    false
+    each {  |e| return false unless yield e  }
+    true
   end
 
   def filter
-    result = []
-    self.each do |e|
-      result.append(e) if yield(e)
-    end
-    result
+    new_list = []
+    each {  |e| new_list.push(e) if yield e  }
+    new_list
   end
 end
+
+
